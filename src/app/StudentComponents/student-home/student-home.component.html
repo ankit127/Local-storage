@@ -1,127 +1,127 @@
 <div class="main">
-    <div class="content">
-      <div class="header">
-        <h5>Total Student(2) &nbsp; <button class="btn btn-primary btn-sm"   (click)="openPopup()"
-            style="border-radius: 50%;"><i class="fa fa-plus"></i></button></h5>
-      </div>
-      <div>
-        <table class="table table-bordered">
-          <tr class="bg bg-primary" style="text-align: center;">
-            <th>  </th>
-            <th> StudentRoll_No </th>
-            <th> StudentName  </th>
-            <th> Grade/Class </th>
-            <th> Division </th>
-            <th> Date Of Birth </th>
-            <th> Gender </th>
-            <th> Actions </th>
-          </tr>
-          <tr *ngFor="let todo of studentList; let i = index" style="text-align: center;">
-            <td> <input type="checkbox" value="todo.studentRollNo" (click)="selectID(todo.studentRollNo,$event)"> </td>
-            <td> {{ todo.studentRollNo }} </td>
-            <td> {{ todo.name }} </td>
-            <td> {{ todo.grade }} </td>
-            <td> {{ todo.division }} </td>
-            <td> {{ todo.dateofBirth }} </td>
-            <td> {{ todo.gender }} </td>
-            <td>
-                 <button class="btn btn-sm btn-warning " style="margin: 5px;" (click)="openPopup1()" [routerLink]="['./edit', todo.studentRollNo]">Edit</button>&nbsp;&nbsp;
-                 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}"
-                 style="margin-top: 40px;">
-                 <div class="modal-dialog" role="document">
-                   <div class="modal-content">
-                     <div class="modal-header">
-                       <h4 class="modal-title">Add/Edit Student</h4>
-                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                         <span aria-hidden="true" data-dismiss="close">&times;</span>
-                       </button>
-                     </div>
-                     <div class="modal-body">
-                       <div class="header1">
-                         <button class="btn btn-primary btn-sm" [routerLink]="['./edit', todo.studentRollNo]">Student Info</button> &nbsp;
-                         <button class="btn btn-primary btn-sm" routerLink="./extraAct">Extra Activites</button>
-                         <div class="outer">
-                           <router-outlet></router-outlet>
-                         </div>
+  <div class="content">
+    <div class="header">
+      <h5>Total Student(2) &nbsp; <button class="btn btn-primary btn-sm"   (click)="openPopup()"
+          style="border-radius: 50%;"><i class="fa fa-plus"></i></button></h5>
+    </div>
+    <div>
+      <table class="table table-bordered">
+        <tr class="bg bg-primary" style="text-align: center;">
+          <th>  </th>
+          <th> StudentRoll_No </th>
+          <th> StudentName  </th>
+          <th> Grade/Class </th>
+          <th> Division </th>
+          <th> Date Of Birth </th>
+          <th> Gender </th>
+          <th> Actions </th>
+        </tr>
+        <tr *ngFor="let todo of studentList; let i = index" style="text-align: center;">
+          <td> <input type="checkbox" value="todo.studentRollNo" (click)="selectID(todo.studentRollNo,$event)"> </td>
+          <td> {{ todo.studentRollNo }} </td>
+          <td> {{ todo.name }} </td>
+          <td> {{ todo.grade }} </td>
+          <td> {{ todo.division }} </td>
+          <td> {{ todo.dateofBirth }} </td>
+          <td> {{ todo.gender }} </td>
+          <td>
+               <button class="btn btn-sm btn-warning " style="margin: 5px;" (click)="openPopup1()" [routerLink]="['./edit', todo.studentRollNo]">Edit</button>&nbsp;&nbsp;
+               <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}"
+               style="margin-top: 40px;">
+               <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <h4 class="modal-title">Add/Edit Student</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true" data-dismiss="close">&times;</span>
+                     </button>
+                   </div>
+                   <div class="modal-body">
+                     <div class="header1">
+                       <button class="btn btn-primary btn-sm" [routerLink]="['./edit', todo.studentRollNo]">Student Info</button> &nbsp;
+                       <button class="btn btn-primary btn-sm" routerLink="./extraAct">Extra Activites</button>
+                       <div class="outer">
+                         <router-outlet></router-outlet>
                        </div>
                      </div>
-                     <div class="modal-footer">
-                       <button type="button" style="float: left;" class="btn btn-danger" (click)="closePopup1()">
-                         Close
-                       </button>
+                   </div>
+                   <div class="modal-footer">
+                     <button type="button" style="float: left;" class="btn btn-danger" (click)="closePopup1()">
+                       Close
+                     </button>
 
-                     </div>
                    </div>
                  </div>
                </div>
-                 <button class="btn btn-sm btn-danger" (click)="Delete(todo.studentRollNo)">Delete</button>
-            </td>
+             </div>
+               <button class="btn btn-sm btn-danger" (click)="Delete(todo.studentRollNo)">Delete</button>
+          </td>
 
-          </tr>
-        </table>
+        </tr>
+      </table>
 
-      </div>
-      <button class="btn btn-danger" style="margin-left: 20px;margin-bottom: 20px;" (click)="deletAll()"> Delete All</button>
     </div>
-
+    <button class="btn btn-danger" style="margin-left: 20px;margin-bottom: 20px;" (click)="deletAll()"> Delete All</button>
   </div>
 
-  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" style="margin-top: 40px;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Add Student</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" data-dismiss="close">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row" style="background-color: aqua;">
-                        <div class="col-md-12">
-                            <br>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" style="margin-top: 40px;">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Add Student</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" data-dismiss="close">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="container-fluid">
+                  <div class="row" style="background-color: aqua;">
+                      <div class="col-md-12">
+                          <br>
 
 
-                            <input type="text" style="border-radius: 50px;" name="name"
-                                id="name" [(ngModel)]="studentObj.name" class="form-control"
-                                placeholder="name">
-                        </div><br>
+                          <input type="text" style="border-radius: 50px;" name="name"
+                              id="name" [(ngModel)]="studentObj.name" class="form-control"
+                              placeholder="name">
+                      </div><br>
 
-                        <div class="col-md-12">
-                            <input type="text" style="border-radius: 50px;" name="grade" id="Grade" [(ngModel)]="studentObj.grade"
-                                class="form-control" placeholder="grade">
-                        </div><br>
-                        <div class="col-md-12">
-                            <input type="text" style="border-radius: 50px;" name="Division" id="division"
-                                [(ngModel)]="studentObj.division" class="form-control" placeholder="division">
-                        </div><br>
-                        <div class="col-md-12">
-                            <input type="date" style="border-radius: 50px;" name="dateofBirth" id="dateofBirth"
-                                [(ngModel)]="studentObj.dateofBirth" class="form-control" placeholder="dateofBirth">
-                        </div><br>
+                      <div class="col-md-12">
+                          <input type="text" style="border-radius: 50px;" name="grade" id="Grade" [(ngModel)]="studentObj.grade"
+                              class="form-control" placeholder="grade">
+                      </div><br>
+                      <div class="col-md-12">
+                          <input type="text" style="border-radius: 50px;" name="Division" id="division"
+                              [(ngModel)]="studentObj.division" class="form-control" placeholder="division">
+                      </div><br>
+                      <div class="col-md-12">
+                          <input type="date" style="border-radius: 50px;" name="dateofBirth" id="dateofBirth"
+                              [(ngModel)]="studentObj.dateofBirth" class="form-control" placeholder="dateofBirth">
+                      </div><br>
 
-                        <div class="col-md-12">
-                            <input type="text" style="border-radius: 50px;" name="gender" id="gender"
-                                [(ngModel)]="studentObj.gender" class="form-control" placeholder="Gender">
-                        </div>
+                      <div class="col-md-12">
+                          <input type="text" style="border-radius: 50px;" name="gender" id="gender"
+                              [(ngModel)]="studentObj.gender" class="form-control" placeholder="Gender">
+                      </div>
 
-                        <br><br>
-                        <div class="col">
-                            <button class="btn btn-success" style="margin-left: 130px;width: 200px;" (click)="saveStudet()">
-                                Add Student</button>
-                        </div><br>
-                    </div>
+                      <br><br>
+                      <div class="col">
+                          <button class="btn btn-success" style="margin-left: 130px;width: 200px;" (click)="saveStudet()">
+                              Add Student</button>
+                      </div><br>
+                  </div>
 
 
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" style="float: left;" class="btn btn-danger" (click)="closePopup()">
-                        Close
-                    </button>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" style="float: left;" class="btn btn-danger" (click)="closePopup()">
+                      Close
+                  </button>
 
-                </div>
-            </div>
-        </div>
+              </div>
+          </div>
+      </div>
 
-    </div>
+  </div>
