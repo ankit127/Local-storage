@@ -1,0 +1,25 @@
+<p>Please Add Extra activity Detail</p>
+<div class="content" style="border: 1px solid black;">
+    <div id="contentInside" *ngFor="let container of containers"><br>
+      <div class="col-md-6">
+          <div class="row">
+         <select name="cars" id="cars">
+          <option value="Drawing">Drawing</option>
+          <option value="Cricket">Cricket</option>
+          <option value="football">football</option>
+          <option value="baseball">baseball</option>
+        </select>
+    </div><br>
+    <div class="col-12">
+        <div class="row" style="margin-left: 100px;">
+            <div class="col-6"><input type="time" placeholder="time"></div>
+            <div class="col-6"><input style="margin-left: 30px;" type="time" placeholder="time"></div>
+
+        </div>
+    </div>
+      </div>
+    </div>
+ </div>
+ <div><br>
+ <button class="btn btn-dm btn-secondary" (click)="addMoreDiv()">Add More Activity</button><br>
+</div>

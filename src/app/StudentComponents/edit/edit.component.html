@@ -1,0 +1,34 @@
+<p style="background-color: coral;">Update Student Details</p>
+
+<div class="content1">
+     <div class="row">
+        <div class="col-md-12" >
+
+        <input type="text" style="border-radius: 50px;" name="studentRollNo" 
+           id="studentRollNo" [(ngModel)]="studentObj.studentRollNo" class="form-control" placeholder="studentRollNo">
+        <br>
+
+        <input type="text" style="border-radius: 50px;" 
+              name="name" id="name" [(ngModel)]="studentObj.name" class="form-control" placeholder="name">
+         <br>     
+
+            <input type="text" style="border-radius: 50px;" 
+              name="grade" id="grade" [(ngModel)]="studentObj.grade" class="form-control" placeholder="grade">
+        <br>
+
+            <input type="text" style="border-radius: 50px;" 
+              name="division" id="division" [(ngModel)]="studentObj.division" class="form-control" placeholder="Division">
+        <br>
+
+            <input type="date" style="border-radius: 50px;" 
+              name="dateofBirth" id="dateofBirth" [(ngModel)]="studentObj.dateofBirth" class="form-control" placeholder="DateofBirth">
+        <br>
+
+            <input type="text" style="border-radius: 50px;" 
+              name="gender" id="gender" [(ngModel)]="studentObj.gender" class="form-control" placeholder="gender">
+        <br>
+
+            <button class="btn btn-success"  (click)="updateStudent()"> Update Student </button>
+
+    </div>
+</div>
