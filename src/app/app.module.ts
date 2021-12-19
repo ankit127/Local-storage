@@ -8,6 +8,7 @@ import { EditComponent } from './StudentComponents/edit/edit.component';
 import { ExtraActivityComponent } from './StudentComponents/extra-activity/extra-activity.component';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,

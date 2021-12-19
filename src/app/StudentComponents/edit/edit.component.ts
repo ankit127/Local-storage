@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentObj } from 'src/app/Interface/student-obj';
 
 @Component({
@@ -10,9 +10,11 @@ import { StudentObj } from 'src/app/Interface/student-obj';
 export class EditComponent implements OnInit {
 
   studentObj: StudentObj;
+  studentList: StudentObj[];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,private router: Router) {
     this.studentObj =  new StudentObj();
+    this.studentList = [];
     this.route.params.subscribe((res) => {
       this.studentObj.studentRollNo = res['id']
     })
@@ -40,7 +42,12 @@ export class EditComponent implements OnInit {
       studentList.splice(studentList.findIndex((a: any)=> a.studentRollNo == this.studentObj.studentRollNo),1)
       studentList.push(this.studentObj);
       localStorage.setItem('studentList', JSON.stringify(studentList));
+          
      }
+       
   }
 
+
+  
+  
 }

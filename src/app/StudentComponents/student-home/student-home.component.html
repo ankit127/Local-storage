@@ -1,12 +1,12 @@
 <div class="main">
   <div class="content">
     <div class="header">
-      <h5>Total Student(2) &nbsp; <button class="btn btn-primary btn-sm"   (click)="openPopup()"
+      <h5 >Total Student(2)  &nbsp; <button class="btn btn-primary btn-sm"   (click)="openPopup()"
           style="border-radius: 50%;"><i class="fa fa-plus"></i></button></h5>
     </div>
     <div>
-      <table class="table table-bordered">
-        <tr class="bg bg-primary" style="text-align: center;">
+      <table class="table table-bordered table-striped">
+        <tr class="bg bg-primary" style="text-align: center">
           <th>  </th>
           <th> StudentRoll_No </th>
           <th> StudentName  </th>
@@ -19,13 +19,13 @@
         <tr *ngFor="let todo of studentList; let i = index" style="text-align: center;">
           <td> <input type="checkbox" value="todo.studentRollNo" (click)="selectID(todo.studentRollNo,$event)"> </td>
           <td> {{ todo.studentRollNo }} </td>
-          <td> {{ todo.name }} </td>
+          <td> {{ todo.name | uppercase}} </td>
           <td> {{ todo.grade }} </td>
-          <td> {{ todo.division }} </td>
-          <td> {{ todo.dateofBirth }} </td>
-          <td> {{ todo.gender }} </td>
+          <td> {{ todo.division | uppercase}} </td>
+          <td> {{ todo.dateofBirth | uppercase | date:"dd/MM/yyyy"}} </td>
+          <td> {{ todo.gender | uppercase}} </td>
           <td>
-               <button class="btn btn-sm btn-warning " style="margin: 5px;" (click)="openPopup1()" [routerLink]="['./edit', todo.studentRollNo]">Edit</button>&nbsp;&nbsp;
+               <button class="btn btn-sm btn-warning " style="margin: 10px;width:70px;border: 1px solid yellow;" (click)="openPopup1()" [routerLink]="['./edit', todo.studentRollNo]">Edit</button>&nbsp;&nbsp;
                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}"
                style="margin-top: 40px;">
                <div class="modal-dialog" role="document">
@@ -54,7 +54,7 @@
                  </div>
                </div>
              </div>
-               <button class="btn btn-sm btn-danger" (click)="Delete(todo.studentRollNo)">Delete</button>
+               <button class="btn btn-sm btn-outline-danger" style="margin: 10px;border: 1px solid red;" (click)="Delete(todo.studentRollNo)">Delete</button>
           </td>
 
         </tr>
