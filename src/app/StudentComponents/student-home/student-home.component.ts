@@ -22,57 +22,15 @@ export class StudentHomeComponent implements OnInit {
     this.getAllDetails()
   }
 
+  //to get all the details from local storage
   getAllDetails() {
     const records = localStorage.getItem('studentList');
     if (records !== null) {
       this.studentList = JSON.parse(records);
     }
   }
-
-  selectID(id: any, event: any) {
-    this.SelectedIDs.push(id);
-    console.log(this.SelectedIDs);
-  }
-
-
-  i: number = 0;
-
-
-  deletAll() {
-    let myId = this.SelectedIDs;
-    const oldRecord = localStorage.getItem('studentList');
-
-    if (oldRecord !== null) {
-      const studentList = JSON.parse(oldRecord);
-      for (let i = 0; i < myId.length; i++) {
-        studentList.splice(studentList.findIndex((a: any) => a.studentRollNo == myId), 1)
-        localStorage.setItem('studentList', JSON.stringify(studentList));
-      }
-      this.getAllDetails()
-
-    }
-
-  }
-
-  displayStyle = "none";
-  displayStyle1 = "none";
-  openPopup() {
-
-    this.displayStyle = "block";
-  }
-
-
-  closePopup() {
-    this.displayStyle = "none";
-  }
-
-  openPopup1() {
-    this.displayStyle1 = "block";
-  }
-  closePopup1() {
-    this.displayStyle1 = "none";
-  }
-
+  
+  //to get id 
   getNewStudentId() {
     const oldRecord = localStorage.getItem('studentList');
     if (oldRecord !== null) {
@@ -83,6 +41,7 @@ export class StudentHomeComponent implements OnInit {
     }
   }
 
+  //is used to save the student
   saveStudet() {
     const latestId = this.getNewStudentId();
     const oldRecord = localStorage.getItem('studentList');
@@ -103,6 +62,7 @@ export class StudentHomeComponent implements OnInit {
 
   }
 
+  //delete one student
   Delete(id: any) {
     const oldRecord = localStorage.getItem('studentList');
     if (oldRecord !== null) {
@@ -118,4 +78,59 @@ export class StudentHomeComponent implements OnInit {
     }
   }
 
+  //to get all selected id's in array
+  selectID(id: any, event: any) {
+    this.SelectedIDs.push(id);
+    console.log(this.SelectedIDs);
+  }
+
+
+  i: number = 0;
+  //to delete all selected id's
+  deletAll() {
+    let myId = this.SelectedIDs;
+    const oldRecord = localStorage.getItem('studentList');
+
+    if (oldRecord !== null) {
+      const studentList = JSON.parse(oldRecord);
+      for (let i = 0; i < myId.length; i++) {
+        studentList.splice(studentList.findIndex((a: any) => a.studentRollNo == myId), 1)
+        localStorage.setItem('studentList', JSON.stringify(studentList));
+      }
+      this.getAllDetails();
+      this.route.navigateByUrl('/home');
+
+    }
+
+  }
+
+  //is used to show & close modal popup 
+  displayStyle = "none";
+  displayStyle1 = "none";
+  openPopup() {
+
+    this.displayStyle = "block";
+  }
+ 
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
+  openPopup1() {
+    this.displayStyle1 = "block";
+  }
+  
+  closePopup1() {
+    this.displayStyle1 = "none";
+  }
+
+  //clear all field's
+  clearStudet(){
+    this.studentObj.name = " " ;
+    this.studentObj.grade = undefined;
+    this.studentObj.division = " ";
+    this.studentObj.dateofBirth = " ";
+    this.studentObj.gender = " ";
+    
+  }
 }

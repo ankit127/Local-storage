@@ -22,6 +22,7 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     const oldRecord =  localStorage.getItem('studentList');
+    const latestId = this.getNewStudentId();
      if(oldRecord !== null){
         const studentList = JSON.parse(oldRecord);
         const currentStudent = studentList.find(
@@ -37,17 +38,26 @@ export class EditComponent implements OnInit {
   }
   updateStudent(){
     const oldRecord =  localStorage.getItem('studentList');
-     if(oldRecord !== null){
+    if(oldRecord !== null){
       const studentList = JSON.parse(oldRecord);
       studentList.splice(studentList.findIndex((a: any)=> a.studentRollNo == this.studentObj.studentRollNo),1)
       studentList.push(this.studentObj);
       localStorage.setItem('studentList', JSON.stringify(studentList));
-          
+      alert('Student is Updated !!');
      }
-       
+     
   }
-
+  
+ 
 
   
-  
+  getNewStudentId() {
+    const oldRecord = localStorage.getItem('studentList');
+    if (oldRecord !== null) {
+      const studentList = JSON.parse(oldRecord);
+      return studentList.length + 1;
+    } else {
+      return 1;
+    }
+  }
 }
