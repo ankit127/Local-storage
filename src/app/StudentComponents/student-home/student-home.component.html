@@ -1,7 +1,7 @@
 <div class="main">
   <div class="content">
     <div class="header">
-      <h5 >Total Student(2)  &nbsp; <button class="btn btn-primary btn-sm" alt="Add Student"  (click)="openPopup()"
+      <h5  routerLink="/home">Total Student {{ lg }}  &nbsp; <button class="btn btn-primary btn-sm" alt="Add Student"  (click)="openPopup()"
           style="border-radius: 50%;"><i class="fa fa-plus"></i></button></h5>
     </div>
     <div>
@@ -18,14 +18,13 @@
         </tr>
         <tr *ngFor="let todo of studentList; let i = index" style="text-align: center;">
           <td> <input type="checkbox" value="todo.studentRollNo" (click)="selectID(todo.studentRollNo,$event)"> </td>
-         
           <td> {{ todo.name | uppercase}} </td>
           <td> {{ todo.grade }} </td>
           <td> {{ todo.division | uppercase}} </td>
           <td> {{ todo.dateofBirth | uppercase | date:"dd/MM/yyyy"}} </td>
           <td> {{ todo.gender | uppercase}} </td>
           <td>
-               <button class="btn btn-sm btn-warning" style="margin: 10px;width:70px;border: 1px solid yellow;" (click)="openPopup1()" [routerLink]="['./edit', todo.studentRollNo]">Edit</button>&nbsp;&nbsp;
+               <button class="btn btn-sm btn-warning" style="margin: 10px;border: 1px solid yellow;" (click)="openPopup1()" [routerLink]="['./edit', todo.studentRollNo]"><i class="fa fa-edit fa-lg"></i>  </button>&nbsp;
                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}"
                style="margin-top: 40px;">
                <div class="modal-dialog" role="document">
@@ -54,14 +53,14 @@
                  </div>
                </div>
              </div>
-               <button class="btn btn-sm btn-outline-danger" style="margin: 10px;border: 1px solid red;" (click)="Delete(todo.studentRollNo)">Delete</button>
+               <button class="btn btn-sm btn-outline-danger" style="margin: 10px;border: 1px solid red;" (click)="Delete(todo.studentRollNo)"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> </button>
           </td>
 
         </tr>
       </table>
 
     </div>
-    <button class="btn btn-danger" style="margin-left: 20px;margin-bottom: 20px;" (click)="deletAll()"> Delete All</button>
+    <button class="btn btn-danger" style="margin-left: 20px;margin-bottom: 20px;" (click)="deletAll()"> <i class="fa fa-trash fa-lg" aria-hidden="true"></i> Delete All</button>
   </div>
 
 </div>

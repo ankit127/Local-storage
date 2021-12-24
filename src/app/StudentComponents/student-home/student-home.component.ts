@@ -12,6 +12,7 @@ export class StudentHomeComponent implements OnInit {
   studentList: StudentObj[];
   studentObj: StudentObj;
   SelectedIDs: any[] = [];
+  lg: number = 0 ;
 
   constructor(private route: Router) {
     this.studentObj = new StudentObj();
@@ -19,6 +20,7 @@ export class StudentHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.lg = localStorage.length+1;
     this.getAllDetails()
   }
 
@@ -27,8 +29,12 @@ export class StudentHomeComponent implements OnInit {
     const records = localStorage.getItem('studentList');
     if (records !== null) {
       this.studentList = JSON.parse(records);
+      
     }
+  
   }
+
+ 
   
   //to get id 
   getNewStudentId() {
@@ -133,4 +139,12 @@ export class StudentHomeComponent implements OnInit {
     this.studentObj.gender = " ";
     
   }
+
+  getToclosePopup(){
+  
+   this.closePopup1();
+   this.getAllDetails();
+   }
+   
+    
 }
