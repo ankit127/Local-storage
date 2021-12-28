@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentObj } from 'src/app/Interface/student-obj';
+import { StudentServiceService } from 'src/app/student-service.service';
 
 @Component({
   selector: 'app-student-home',
@@ -9,29 +10,29 @@ import { StudentObj } from 'src/app/Interface/student-obj';
 })
 export class StudentHomeComponent implements OnInit {
 
-  studentList: StudentObj[];
+  studentList: StudentObj[] | any;
   studentObj: StudentObj;
   SelectedIDs: any[] = [];
   lg: number = 0 ;
 
-  constructor(private route: Router) {
+  constructor(private route: Router,private commSer: StudentServiceService) {
     this.studentObj = new StudentObj();
     this.studentList = [];
   }
 
   ngOnInit(): void {
-    this.lg = localStorage.length+1;
     this.getAllDetails()
+    this.lg =localStorage.length;
   }
 
   //to get all the details from local storage
   getAllDetails() {
-    const records = localStorage.getItem('studentList');
-    if (records !== null) {
-      this.studentList = JSON.parse(records);
-      
-    }
-  
+
+     this.commSer.RetriveAllStudentFromStorage().subscribe(result => {
+      this.studentList = result     
+      console.log(result);
+    })
+    
   }
 
  
@@ -48,40 +49,20 @@ export class StudentHomeComponent implements OnInit {
   }
 
   //is used to save the student
-  saveStudet() {
-    const latestId = this.getNewStudentId();
-    const oldRecord = localStorage.getItem('studentList');
-    this.studentObj.studentRollNo = latestId;
-    if (oldRecord !== null) {
-      const studentList = JSON.parse(oldRecord);
-      studentList.push(this.studentObj);
-      localStorage.setItem('studentList', JSON.stringify(studentList));
-      alert("New Student is added.");
-      this.closePopup();
-      this.getAllDetails();
-    } else {
-      const studentArray = [];
-      studentArray.push(this.studentObj);
-      localStorage.setItem('studentList', JSON.stringify(studentArray));
-
-    }
-
+  saveStudet(studentObj: any) {
+    this.commSer.PostStudentToLocalStorage(this.studentObj);
+    this.closePopup() 
+    this.getAllDetails();
+    console.log(this.studentObj);
   }
 
   //delete one student
   Delete(id: any) {
-    const oldRecord = localStorage.getItem('studentList');
-    if (oldRecord !== null) {
-      const studentList = JSON.parse(oldRecord);
-      studentList.splice(studentList.findIndex((a: any) => a.studentRollNo == id), 1)
-      localStorage.setItem('studentList', JSON.stringify(studentList));
-      alert("This id is deleted :" + id);
-      const records = localStorage.getItem('studentList');
-      if (records !== null) {
-        this.studentList = JSON.parse(records);
-      }
-
-    }
+      this.commSer.deleteStudent(id).then(result => {
+      alert("This Id : " +result+ " is deleted");
+      this.getAllDetails();
+    })
+    
   }
 
   //to get all selected id's in array
@@ -147,4 +128,7 @@ export class StudentHomeComponent implements OnInit {
    }
    
     
+   myEdit(studentRollNo: number){
+      
+   }
 }

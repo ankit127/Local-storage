@@ -5,10 +5,10 @@
           style="border-radius: 50%;"><i class="fa fa-plus"></i></button></h5>
     </div>
     <div>
-      <table class="table table-bordered table-striped">
-        <tr class="bg bg-primary" style="text-align: center">
+      <table class="table table-bordered table-striped ">
+        <tr class="bg bg-light" style="text-align: center">
           <th>  </th>
-          
+          <th>studentRollNo</th>
           <th> StudentName  </th>
           <th> Grade/Class </th>
           <th> Division </th>
@@ -18,13 +18,14 @@
         </tr>
         <tr *ngFor="let todo of studentList; let i = index" style="text-align: center;">
           <td> <input type="checkbox" value="todo.studentRollNo" (click)="selectID(todo.studentRollNo,$event)"> </td>
+          <td>{{ todo.studentRollNo }}</td>
           <td> {{ todo.name | uppercase}} </td>
           <td> {{ todo.grade }} </td>
           <td> {{ todo.division | uppercase}} </td>
           <td> {{ todo.dateofBirth | uppercase | date:"dd/MM/yyyy"}} </td>
           <td> {{ todo.gender | uppercase}} </td>
           <td>
-               <button class="btn btn-sm btn-warning" style="margin: 10px;border: 1px solid yellow;" (click)="openPopup1()" [routerLink]="['./edit', todo.studentRollNo]"><i class="fa fa-edit fa-lg"></i>  </button>&nbsp;
+               <button class="btn btn-sm btn-warning" style="margin: 10px;border: 1px solid yellow;" (click)="openPopup1()"   [routerLink]="['./edit', todo.studentRollNo]" ><i class="fa fa-edit fa-lg"></i>  </button>&nbsp;
                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}"
                style="margin-top: 40px;">
                <div class="modal-dialog" role="document">
@@ -37,7 +38,7 @@
                    </div>
                    <div class="modal-body">
                      <div class="header1">
-                       <button class="btn btn-primary btn-sm"  [routerLink]="['./edit', todo.studentRollNo]">Student Info</button> &nbsp;
+                       <button class="btn btn-primary btn-sm" [routerLink]="['./edit', todo.studentRollNo]">Student Info</button> &nbsp;
                        <button class="btn btn-primary btn-sm "  routerLink="./extraAct">Extra Activites</button>
                        <div class="outer">
                          <router-outlet></router-outlet>
@@ -77,6 +78,12 @@
           <div class="modal-body">
               <div class="container-fluid">
                   <div class="row" style="background-color: aqua;"><br/>
+                    <div class="col-md-12">
+                
+                      <input type="text" style="border-radius: 50px;" name="studentRollNo"
+                             id="name" [(ngModel)]="studentObj.studentRollNo" class="form-control"
+                             placeholder="StudentRollNo">
+                     </div><br/><br/>
                       <div class="col-md-12">
                 
                        <input type="text" style="border-radius: 50px;" name="name"
@@ -104,16 +111,13 @@
 
                       <br/>
                       <div class="col-md-12">
-                          <button class="btn btn-success" style="width: 200px;" (click)="saveStudet()">
+                          <button class="btn btn-success" style="width: 200px;" (click)="saveStudet(studentObj)">
                               Add Student</button>&nbsp;
                               <button class="btn btn-secondary" style="width: 200px;" (click)="clearStudet()">
                                 Clear Student</button>
                       </div><br><br>
                   </div>
-
-
-
-              </div>
+               </div>
               <div class="modal-footer">
                   <button type="button" style="float: left;" class="btn btn-danger" (click)="closePopup1()">
                       Close

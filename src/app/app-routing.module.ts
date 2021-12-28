@@ -7,8 +7,7 @@ import { StudentHomeComponent } from './StudentComponents/student-home/student-h
 const routes: Routes = [
   {path: 'home', component: StudentHomeComponent},
   {path: 'edit/:id',component: EditComponent},
-  {path: 'extraAct', component: ExtraActivityComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
+  {path: 'extraAct', component: ExtraActivityComponent}
   
  
 ];
