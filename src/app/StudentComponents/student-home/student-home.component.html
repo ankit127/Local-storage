@@ -1,14 +1,14 @@
 <div class="main">
   <div class="content">
     <div class="header">
-      <h5  routerLink="/home">Total Student {{ lg }}  &nbsp; <button class="btn btn-primary btn-sm" alt="Add Student"  (click)="openPopup()"
+      <h5 style="padding-top: 10px;" routerLink="/home">Student Data &nbsp; <button class="btn btn-success btn-sm"   (click)="openPopup()"
           style="border-radius: 50%;"><i class="fa fa-plus"></i></button></h5>
     </div>
     <div>
-      <table class="table table-bordered table-striped ">
-        <tr class="bg bg-light" style="text-align: center">
+      <table class="table table-responsive table-bordered table-stripped ">
+        <tr class="bg bg-dark" style="text-align: center; color: beige;">
           <th>  </th>
-          <th>studentRollNo</th>
+
           <th> StudentName  </th>
           <th> Grade/Class </th>
           <th> Division </th>
@@ -16,9 +16,9 @@
           <th> Gender </th>
           <th> Actions </th>
         </tr>
-        <tr *ngFor="let todo of studentList; let i = index" style="text-align: center;">
+        <tr *ngFor="let todo of studentList; let i = index" class="bg bg-light" style="text-align: center;">
           <td> <input type="checkbox" value="todo.studentRollNo" (click)="selectID(todo.studentRollNo,$event)"> </td>
-          <td>{{ todo.studentRollNo }}</td>
+         
           <td> {{ todo.name | uppercase}} </td>
           <td> {{ todo.grade }} </td>
           <td> {{ todo.division | uppercase}} </td>
@@ -119,7 +119,7 @@
                   </div>
                </div>
               <div class="modal-footer">
-                  <button type="button" style="float: left;" class="btn btn-danger" (click)="closePopup1()">
+                  <button type="button" style="float: left;" class="btn btn-danger" (click)="closePopup()">
                       Close
                   </button>
 

@@ -12,9 +12,6 @@ export class StudentServiceService {
   studentObj: StudentObj;
   sub = new Subject();
   
- 
- 
-
   constructor() {
     this.studentObj = new StudentObj();
     this.studentList = [];

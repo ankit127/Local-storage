@@ -7,10 +7,11 @@
 .content{
     width: auto;
     height: auto;
-    background-color: aqua;
+   background-color: white;
     margin-left: 200px;
     margin-top: 70px;
     margin-right: 200px;
+    border: 0.1px solid black;
 }
 
 .header {
@@ -20,7 +21,7 @@
 
 .header1{
     height: 520px;
-    background-color: aquamarine;
+    background-color: silver;
     border: 10px black;
 
 }
