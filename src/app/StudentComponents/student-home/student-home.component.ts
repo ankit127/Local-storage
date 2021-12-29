@@ -128,7 +128,5 @@ export class StudentHomeComponent implements OnInit {
    }
    
     
-   myEdit(studentRollNo: number){
-      
-   }
+   
 }
